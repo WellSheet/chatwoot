@@ -41,8 +41,8 @@ export const IFrameHelper = {
     addClass(widgetHolder, holderClassName);
 
     let closeBtn = document.createElement('button');
-    closeBtn.id = 'closeBtn';
-    closeBtn.onclick = window.$chatwoot.toggle;
+    closeBtn.id = 'chatwoot_close_btn';
+    closeBtn.onclick = onBubbleClick;
     addClass(closeBtn, 'button close-btn');
     closeBtn.style.visibility = 'hidden';
 
@@ -175,7 +175,7 @@ export const IFrameHelper = {
     iframe.style.visibility = '';
     iframe.setAttribute('id', `chatwoot_live_chat_widget`);
 
-    const closeBtn = document.getElementById('closeBtn');
+    const closeBtn = document.getElementById('chatwoot_close_btn');
     closeBtn.style.visibility = '';
 
     loadCSS();
