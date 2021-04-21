@@ -43,7 +43,7 @@ export const IFrameHelper = {
     let closeBtn = document.createElement('button');
     closeBtn.id = 'closeBtn';
     closeBtn.onclick = window.$chatwoot.toggle;
-    addClass(closeBtn, 'button transparent compact close-button close-btn');
+    addClass(closeBtn, 'button close-btn');
     closeBtn.style.visibility = 'hidden';
 
     widgetHolder.appendChild(closeBtn);

@@ -149,6 +149,7 @@ export const SDK_CSS = `.woot-widget-holder {
   position: absolute;
   top: 20px;
   right: 15px;
+  border: none;
 }
 .close-btn:before, .close-btn:after {
   position: absolute;
