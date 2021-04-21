@@ -144,4 +144,25 @@ export const SDK_CSS = `.woot-widget-holder {
     width: 400px !important;
  }
 }
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+}
+.close-btn:before, .close-btn:after {
+  position: absolute;
+  left: auto;
+  right: auto;
+  content: ' ';
+  height: 16px;
+  width: 2px;
+  background-color: #555;
+}
+.close-btn:before {
+  transform: rotate(45deg);
+}
+.close-btn:after {
+  transform: rotate(-45deg);
+}
 `;

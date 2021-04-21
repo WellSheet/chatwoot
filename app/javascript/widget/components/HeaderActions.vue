@@ -7,9 +7,6 @@
     >
       <span class="ion-android-open"></span>
     </button>
-    <button class="button transparent compact close-button">
-      <span class="ion-android-close" @click="closeWindow"></span>
-    </button>
   </div>
 </template>
 <script>
