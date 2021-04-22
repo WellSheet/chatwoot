@@ -39,6 +39,15 @@ export const IFrameHelper = {
       holderClassName += ` woot-widget--without-bubble`;
     }
     addClass(widgetHolder, holderClassName);
+
+    let closeBtn = document.createElement('button');
+    closeBtn.id = 'chatwoot_close_btn';
+    closeBtn.onclick = onBubbleClick;
+    addClass(closeBtn, 'button close-btn');
+    closeBtn.style.visibility = 'hidden';
+
+    widgetHolder.appendChild(closeBtn);
+
     widgetHolder.appendChild(iframe);
     body.appendChild(widgetHolder);
     IFrameHelper.initPostMessageCommunication();
@@ -165,6 +174,9 @@ export const IFrameHelper = {
     const iframe = IFrameHelper.getAppFrame();
     iframe.style.visibility = '';
     iframe.setAttribute('id', `chatwoot_live_chat_widget`);
+
+    const closeBtn = document.getElementById('chatwoot_close_btn');
+    closeBtn.style.visibility = '';
 
     loadCSS();
     createBubbleHolder();
