@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isIframe" class="actions flex items-center">
+  <div v-if="showHeaderActions" class="actions flex items-center">
     <button
       v-if="showPopoutButton"
       class="button transparent compact new-window--button"
@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-import { IFrameHelper } from 'widget/helpers/utils';
+import { IFrameHelper, RNHelper } from 'widget/helpers/utils';
 import { buildPopoutURL } from '../helpers/urlParamsHelper';
 
 export default {
@@ -24,6 +24,12 @@ export default {
   computed: {
     isIframe() {
       return IFrameHelper.isIFrame();
+    },
+    isRNWebView() {
+      return RNHelper.isRNWebView();
+    },
+    showHeaderActions() {
+      return this.isIframe || this.isRNWebView;
     },
   },
   methods: {
@@ -53,6 +59,8 @@ export default {
         IFrameHelper.sendMessage({
           event: 'toggleBubble',
         });
+      } else if (RNHelper.isRNWebView) {
+        RNHelper.sendMessage({ type: 'close-widget' });
       }
     },
   },
@@ -77,6 +85,9 @@ export default {
 
   .close-button {
     display: none;
+  }
+  .rn-close-button {
+    display: block !important;
   }
 }
 </style>
