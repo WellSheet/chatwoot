@@ -137,7 +137,7 @@ GEM
     brakeman (4.9.0)
     browser (4.2.0)
     builder (3.2.4)
-    bullet (6.1.0)
+    bullet (6.1.4)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     bundle-audit (0.1.0)
@@ -544,7 +544,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
-    uniform_notifier (1.13.0)
+    uniform_notifier (1.14.2)
     valid_email2 (3.3.1)
       activemodel (>= 3.2)
       mail (~> 2.5)
@@ -671,4 +671,4 @@ RUBY VERSION
    ruby 2.7.2p137
 
 BUNDLED WITH
-   2.1.4
+   2.2.16
