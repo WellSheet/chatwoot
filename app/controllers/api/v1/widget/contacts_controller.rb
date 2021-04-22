@@ -1,6 +1,9 @@
 class Api::V1::Widget::ContactsController < Api::V1::Widget::BaseController
+  before_action :process_hmac
+
+  def show; end
+
   def update
-    process_hmac
     contact_identify_action = ContactIdentifyAction.new(
       contact: @contact,
       params: permitted_params.to_h.deep_symbolize_keys
@@ -12,7 +15,7 @@ class Api::V1::Widget::ContactsController < Api::V1::Widget::BaseController
 
   def process_hmac
     return if params[:identifier_hash].blank?
-    raise StandardError, 'HMAC failed: Invalid Identifer Hash Provided' unless valid_hmac?
+    raise StandardError, 'HMAC failed: Invalid Identifier Hash Provided' unless valid_hmac?
 
     @contact_inbox.update(hmac_verified: true)
   end
