@@ -15,7 +15,6 @@ defaults: &defaults
     - image: circleci/postgres:alpine
     - image: circleci/redis:alpine
   environment:
-      - CC_TEST_REPORTER_ID: b1b5c4447bf93f6f0b06a64756e35afd0810ea83649f03971cbf303b4449456f
       - RAILS_LOG_TO_STDOUT: false
 jobs:
   build:
@@ -124,8 +123,3 @@ jobs:
       - store_artifacts:
           path: log
 
-      - run:
-          name: Upload coverage results to Code Climate
-          command: |
-            ~/tmp/cc-test-reporter sum-coverage ~/tmp/codeclimate.*.json -p 2 -o ~/tmp/codeclimate.total.json
-            ~/tmp/cc-test-reporter upload-coverage -i ~/tmp/codeclimate.total.json
