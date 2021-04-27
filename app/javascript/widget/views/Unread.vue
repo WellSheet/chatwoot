@@ -99,7 +99,6 @@ export default {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  justify-content: flex-end;
   overflow: hidden;
 
   .unread-messages {
