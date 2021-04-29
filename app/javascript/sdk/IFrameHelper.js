@@ -154,6 +154,9 @@ export const IFrameHelper = {
         onBubbleClick({ toggleValue });
         const holderEl = document.querySelector('.woot-widget-holder');
         addClass(holderEl, 'has-unread-view');
+
+        const closeBtn = document.getElementById('chatwoot_close_btn');
+        closeBtn.style.visibility = 'hidden';
       }
     },
 
@@ -165,6 +168,9 @@ export const IFrameHelper = {
     removeUnreadClass: () => {
       const holderEl = document.querySelector('.woot-widget-holder');
       removeClass(holderEl, 'has-unread-view');
+
+      const closeBtn = document.getElementById('chatwoot_close_btn');
+      closeBtn.style.visibility = '';
     },
   },
   pushEvent: eventName => {

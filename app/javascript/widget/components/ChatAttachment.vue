@@ -56,6 +56,7 @@ export default {
   cursor: pointer;
   position: relative;
   width: 20px;
+  display: block;
 
   i {
     font-size: $font-size-large;
