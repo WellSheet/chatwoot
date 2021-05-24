@@ -18,7 +18,7 @@
       size="40px"
     />
     <div class="conversation--details columns">
-      <span v-if="showInboxName" v-tooltip.bottom="inboxName" class="label">
+      <span v-if="showInboxName" class="label">
         <i :class="computedInboxClass" />
         {{ inboxName }}
       </span>
@@ -30,10 +30,12 @@
         <span v-if="lastMessageInChat.content">
           {{ parsedLastMessage }}
         </span>
-        <span v-else-if="!lastMessageInChat.attachments">{{ ` ` }}</span>
-        <span v-else>
+        <span v-else-if="lastMessageInChat.attachments">
           <i :class="`small-icon ${this.$t(`${attachmentIconKey}.ICON`)}`"></i>
           {{ this.$t(`${attachmentIconKey}.CONTENT`) }}
+        </span>
+        <span v-else>
+          {{ $t('CHAT_LIST.NO_CONTENT') }}
         </span>
       </p>
       <p v-else class="conversation--message">
@@ -161,7 +163,11 @@ export default {
     },
 
     showInboxName() {
-      return !this.hideInboxName && this.isInboxNameVisible;
+      return (
+        !this.hideInboxName &&
+        this.isInboxNameVisible &&
+        this.inboxesList.length > 1
+      );
     },
     inboxName() {
       const stateInbox = this.chatInbox;
@@ -187,6 +193,10 @@ export default {
 <style lang="scss" scoped>
 .conversation {
   align-items: center;
+
+  &:hover {
+    background: var(--color-background-light);
+  }
 }
 
 .has-inbox-name {
