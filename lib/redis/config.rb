@@ -19,7 +19,9 @@ module Redis::Config
       {
         url: ENV.fetch('REDIS_URL', 'redis://127.0.0.1:6379'),
         password: ENV.fetch('REDIS_PASSWORD', nil).presence,
-        ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
+        ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE },
+        reconnect_attempts: 2,
+        network_timeout: 5
       }
     end
 
