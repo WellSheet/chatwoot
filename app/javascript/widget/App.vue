@@ -128,10 +128,10 @@ export default {
     createWidgetEvents(message) {
       const { eventName } = message;
       const isWidgetTriggerEvent = eventName === 'webwidget.triggered';
+      this.setUserLastSeen();
       if (isWidgetTriggerEvent) {
         return;
       }
-      this.setUserLastSeen();
       this.$store.dispatch('events/create', { name: eventName });
     },
     registerListeners() {
