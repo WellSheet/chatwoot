@@ -100,10 +100,8 @@ export default {
     },
     registerUnreadEvents() {
       bus.$on('on-agent-message-recieved', () => {
-        if (!this.isIFrame) {
-          this.setUserLastSeen();
-        }
         this.setUnreadView();
+        this.setUserLastSeen();
       });
       bus.$on('on-unread-view-clicked', () => {
         this.unsetUnreadView();
@@ -130,7 +128,7 @@ export default {
     createWidgetEvents(message) {
       const { eventName } = message;
       const isWidgetTriggerEvent = eventName === 'webwidget.triggered';
-      if (isWidgetTriggerEvent && this.showUnreadView) {
+      if (isWidgetTriggerEvent) {
         return;
       }
       this.setUserLastSeen();
